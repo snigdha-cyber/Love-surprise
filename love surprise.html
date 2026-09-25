@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Surprise ❤️</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffd6e7, #ffeef5, #ffd1dc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #5a1930;
+  }
+
+  .hearts span {
+    position: fixed;
+    bottom: -30px;
+    font-size: 24px;
+    animation: float 7s linear infinite;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  .hearts span:nth-child(1){left:8%;animation-delay:0s}
+  .hearts span:nth-child(2){left:25%;animation-delay:2s}
+  .hearts span:nth-child(3){left:48%;animation-delay:4s}
+  .hearts span:nth-child(4){left:70%;animation-delay:1s}
+  .hearts span:nth-child(5){left:88%;animation-delay:3s}
+
+  @keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity:0; }
+    20% { opacity:.8; }
+    100% { transform: translateY(-110vh) rotate(25deg); opacity:0; }
+  }
+
+  .card {
+    width: min(92%, 520px);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: rgba(255,255,255,.9);
+    border-radius: 28px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 15px 45px rgba(100,30,55,.18);
+    position: relative;
+    z-index: 2;
+  }
+
+  h1 { margin-top: 0; font-size: 32px; }
+  h2 { font-size: 25px; }
+  p { font-size: 18px; line-height: 1.6; }
+
+  button {
+    border: 0;
+    border-radius: 999px;
+    padding: 14px 24px;
+    margin: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #ff6f9f;
+    color: white;
+    box-shadow: 0 6px 15px rgba(255,111,159,.25);
+    transition: transform .2s;
+  }
+  button:hover { transform: scale(1.05); }
+
+  .secondary {
+    background: #f3b6c9;
+    color: #5a1930;
+  }
+
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  .progress {
+    font-size: 13px;
+    opacity: .65;
+    margin-bottom: 12px;
+  }
+
+  .big-heart {
+    font-size: 72px;
+    animation: beat 1s infinite;
+  }
+
+  @keyframes beat {
+    50% { transform: scale(1.15); }
+  }
+
+  #noBtn {
+    position: relative;
+  }
+
+  .final-message {
+    font-size: 21px;
+    font-weight: bold;
+  }
+
+  .tiny { font-size: 13px; opacity: .6; }
+</style>
+</head>
+
+<body>
+
+<div class="hearts">
+  <span>❤️</span><span>💗</span><span>💕</span><span>💖</span><span>❤️</span>
+</div>
+
+<div class="card">
+
+  <!-- SCREEN 1 -->
+  <section class="screen active" id="screen1">
+    <div class="big-heart">❤️</div>
+    <h1>Hey you...</h1>
+    <p>I made a tiny little surprise for you.</p>
+    <p>There are a few questions. Choose carefully 😌</p>
+    <button onclick="showScreen(2)">Open my surprise 💌</button>
+  </section>
+
+  <!-- SCREEN 2 -->
+  <section class="screen" id="screen2">
+    <div class="progress">Question 1 of 5</div>
+    <h2>Do you know how special you are to me? 🥺</h2>
+    <button onclick="showScreen(3)">Yes ❤️</button>
+    <button class="secondary" onclick="showScreen(3)">Obviously 😌</button>
+  </section>
+
+  <!-- SCREEN 3 -->
+  <section class="screen" id="screen3">
+    <div class="progress">Question 2 of 5</div>
+    <h2>If I could give you one thing, what would it be?</h2>
+    <button onclick="showScreen(4)">A chocolate 🍫</button>
+    <button onclick="showScreen(4)">A hug 🤗</button>
+    <button onclick="showScreen(4)">My heart ❤️</button>
+  </section>
+
+  <!-- SCREEN 4 -->
+  <section class="screen" id="screen4">
+    <div class="progress">Question 3 of 5</div>
+    <h2>Do you realize someone is very lucky to have you? 👀</h2>
+    <button onclick="showScreen(5)">Yes 😌</button>
+    <button class="secondary" onclick="showScreen(5)">Maybe? 🥺</button>
+  </section>
+
+  <!-- SCREEN 5 -->
+  <section class="screen" id="screen5">
+    <div class="progress">Question 4 of 5</div>
+    <h2>Will you keep choosing me even when I annoy you? 😂❤️</h2>
+    <button onclick="showScreen(6)">YES ❤️</button>
+    <button class="secondary" onclick="showScreen(6)">Of course 🥹</button>
+  </section>
+
+  <!-- SCREEN 6 -->
+  <section class="screen" id="screen6">
+    <div class="progress">FINAL QUESTION 👀</div>
+    <h2>Who loves more? 🤨❤️</h2>
+    <p>Be honest...</p>
+    <button onclick="showScreen(7)">Snigdha ❤️</button>
+    <button id="noBtn" class="secondary">Arjun 😏</button>
+    <p class="tiny">Try clicking the second option 😂</p>
+  </section>
+
+  <!-- FINAL -->
+  <section class="screen" id="screen7">
+    <div class="big-heart">💗</div>
+    <h1>Okay... you made it! 🥹</h1>
+    <p class="final-message">
+      Quiz over.<br><br>
+      The actual answer is that I love you more than these little questions
+      could ever explain. ❤️
+    </p>
+    <p>
+      Thank you for being you, for making ordinary moments special,
+      and for being such an important part of my life.
+    </p>
+    <p class="final-message">You mean so much to me. ❤️</p>
+    <button onclick="createHearts()">One more surprise 💕</button>
+    <p id="extra"></p>
+  </section>
+
+</div>
+
+<script>
+  function showScreen(number) {
+    document.querySelectorAll(".screen").forEach(function(screen) {
+      screen.classList.remove("active");
+    });
+    document.getElementById("screen" + number).classList.add("active");
+  }
+
+  const noBtn = document.getElementById("noBtn");
+
+  noBtn.addEventListener("mouseenter", moveNoButton);
+  noBtn.addEventListener("touchstart", function(event) {
+    event.preventDefault();
+    moveNoButton();
+  });
+
+  function moveNoButton() {
+    const x = Math.random() * 220 - 110;
+    const y = Math.random() * 180 - 90;
+    noBtn.style.transform = "translate(" + x + "px," + y + "px)";
+  }
+
+  function createHearts() {
+    document.getElementById("extra").innerHTML =
+      "Okay okay... one last thing: <br><br>❤️ You are loved. ❤️<br><br>Now go smile, idiot. 😂💕";
+  }
+</script>
+
+</body>
+</html>
